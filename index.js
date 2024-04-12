@@ -28,7 +28,7 @@ fetch("familias.json")
   });
 })
 
-document.getElementById("familias").addEventListener("change", (event) => {
+/* document.getElementById("familias").addEventListener("change", (event) => {
   document.getElementById("productos").innerHTML = "";
   if (event.target.value == 0) {
     muestraProductos(datos.productos);
@@ -58,7 +58,7 @@ function muestraProductos(listaProductos) {
     descripcion.innerHTML = elemento.descripcion;
     document.getElementById("productos").appendChild(descripcion);
   });
-}
+} */
 
 window.addEventListener('resize', () => {
   calculoElementosPorPagina();
