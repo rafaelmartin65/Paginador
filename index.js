@@ -28,6 +28,20 @@ fetch("familias.json")
   });
 })
 
+document.getElementById("familias").addEventListener("change", (event) => {
+  document.getElementById("productos").innerHTML = "";
+  if (event.target.value == 0) {
+    muestraProductos(datos.productos);
+  } else {
+    let datosFiltrados = datos.productos.filter(function (P) {
+      return console.log(P.familia == event.target.value);
+    });
+    
+    console.log(datosFiltrados);
+    muestraProductos(datosFiltrados);
+  }
+});
+
 function cargaFiltroFamilias(familias) {
   document.getElementById("familias").innerHTML = "";
   for (elemento in familias) {
@@ -36,6 +50,14 @@ function cargaFiltroFamilias(familias) {
     nomFamilia.innerHTML = familias[elemento];
     document.getElementById("familias").appendChild(nomFamilia);
   }
+}
+
+function muestraProductos(listaProductos) {
+  listaProductos.forEach((elemento) => {
+    let descripcion = document.createElement("p");
+    descripcion.innerHTML = elemento.descripcion;
+    document.getElementById("productos").appendChild(descripcion);
+  });
 }
 
 window.addEventListener('resize', () => {
