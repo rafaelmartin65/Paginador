@@ -6,6 +6,7 @@ const
 };
 let datos;
 let datosFamilia;
+let productosFiltrados;
 let totalPaginas;
 let idiomaActual;
 let elementosPorPagina = 10;
@@ -24,7 +25,7 @@ fetch("familias.json")
     for (let i=0;i< elementosPorPagina;i++){
       cargaproductos(data.productos[i], data,idiomaActual);
     }
-    paginador(datos, 1);
+    paginador(productosFiltrados, 1);
   });
 })
 
@@ -33,11 +34,11 @@ document.getElementById("familias").addEventListener("change", (event) => {
   if (event.target.value == 0) {
     cargaPaginas(datos.productos,1);
   } else {
-    let datosFiltrados = datos.productos.filter(function (P) {
+    let productosFiltrados = datos.productos.filter(function (P) {
       return console.log(P.familia == event.target.value);
     });
     
-    cargaPaginas(datosFiltrados,1);
+    cargaPaginas(productosFiltrados,1);
   }
 });
 /*
@@ -72,13 +73,13 @@ function calculoElementosPorPagina(){
  for (let s in screen) {
    if (iw >= screen[s]) size = s;
  }
- paginador(datos,actual());
+ paginador(productosFiltrados,actual());
  cargaPaginas(datos,actual());
  return parseInt(size);
 }
 
-function paginador(data, actual) {
-  let paginas = data.productos.length / elementosPorPagina;
+function paginador(productos, actual) {
+  let paginas = productos.length / elementosPorPagina;
   if ((paginas % elementosPorPagina) > 0) totalPaginas = Math.trunc(paginas)+1
   else
     totalPaginas = paginas;
@@ -119,7 +120,7 @@ function paginador(data, actual) {
   document.getElementById("paginas").appendChild(fragmento);
 }
 
-function cargaproductos(producto, datos,idioma) {
+function cargaproductos(producto,idioma) {
   let tarjeta = document.createElement("div");
   tarjeta.classList.add("card","mx-1");
   tarjeta.style = "width: 15rem;";
@@ -165,10 +166,10 @@ formulario.addEventListener("click", function (event) {
   document.getElementById("listado").innerHTML = "";
   idiomaActual = event.target.alt;
   for (let i=0;i< elementosPorPagina;i++){
-    cargaproductos(datos.productos[i], datos,idiomaActual);
+    cargaproductos(datos.productos[i],idiomaActual);
   };
   cargaFiltroFamilias(datosFamilia[idiomaActual])
-  paginador(datos,1);
+  paginador(productosFiltrados,1);
 });
 
 
@@ -186,7 +187,7 @@ document.getElementById("anterior").addEventListener("click", () => {
   if (actual() > 1) {
     let paginaActual = actual() - 1;
     // Vamos a llamar a la funcion de actualizar la pagina actual
-    paginador(datos,paginaActual);
+    paginador(productosFiltrados,paginaActual);
     cargaPaginas(datos,paginaActual);
   }
 });
@@ -195,7 +196,7 @@ document.getElementById("siguiente").addEventListener("click", () => {
   if (actual()< totalPaginas) {
     let paginaActual = actual() + 1;
     // Vamos a llamar a la funcion de actualizar la pagina actual
-    paginador(datos,paginaActual);
+    paginador(productosFiltrados,paginaActual);
     cargaPaginas(datos,paginaActual);
   }
 });
@@ -204,13 +205,13 @@ function cargaPaginas(datos,paginaActual){
   let inicio = (paginaActual-1) * elementosPorPagina;
   document.getElementById("listado").innerHTML = "";
   for (let i=inicio;i < (inicio + elementosPorPagina);i++){
-    cargaproductos(datos.productos[i], datos,idiomaActual);
+    cargaproductos(datos.productos[i],idiomaActual);
   }
 }
 
 function cambiaPagina(event){
   event.preventDefault();
-  paginador(datos,event.target.text);
+  paginador(productosFiltrados,event.target.text);
   cargaPaginas(datos,event.target.text);
 }
 
