@@ -1,0 +1,46 @@
+{
+    "español": 
+      {
+        "fam":"Familia",
+        "desc": "Descripcion",
+        "buscar": "Buscar",
+        "todas":"Todas",
+        "bebidas": "Bebidas",
+        "postres":"Postres",
+        "hamburguesas":"Hamburguesas",
+        "Menu2":"Menu para 2",
+        "Menu3":"Menu para 3",
+        "Menu4":"Menu para 4",
+        ".boton":"Ver Más"
+      }
+    ,
+    "ingles": 
+      {
+        "fam": "Family",
+        "desc": "Description",
+        "buscar":"Search",
+        "todas":"All",
+        "bebidas":"Drinks",
+        "postres":"Desserts",
+        "hamburguesas":"Burguers",
+        "Menu2":"Menu for 2",
+        "Menu3":"Menu for 3",
+        "Menu4":"Menu for 4",
+        ".boton":"See More"
+      }
+    ,
+    "aleman": 
+      {
+        "fam": "Familie",
+        "desc": "Beschreibung",
+        "buscar" :"Suchen",
+        "todas":"Alle",
+        "bebidas":"Getränke",
+        "postres": "Nachspeisen",
+        "hamburguesas":"Burguer",
+        "Menu2":"Menü für 2",
+        "Menu3":"Menü für 3",
+        "Menu4":"Menü für 4",
+        ".boton":"Mehr Sehen"
+      }
+  }

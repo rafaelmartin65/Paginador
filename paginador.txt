@@ -1,0 +1,19 @@
+Puntos a cumplir para que funcione el paginador
+1 - Calcular cuantas paginas necesitamos
+2 - Generar los numeros de las paginas en el paginador
+3 - Generar una funcion que nos diga en que pagina estamos o
+crear una variable para que nos guarde la pagina actual
+4 - Filtrar el JSON en funcion de los elementos que vamos
+a mostrar por pagina y la pagina seleccionada
+
+En el for de carga de datos tengo dos extremos
+Inicio y fin en el caso de la pagina uno es desde 0
+hasta menor que 6 porque los vectores empiezan en cero
+pagina 2 = 6 hasta menor que 12
+pagina 3 = 12 hasta menor que 18
+ Inicio = (pagina-1)*6 
+pagina 1 Inicio 0
+pagina 2 Inicio 6
+pagina 3 Inicio 12
+
+El fin del for siempre es inicio mas 6

@@ -1,0 +1,142 @@
+let datos;
+let totalPaginas;
+fetch("KFC.json")
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("listado").innerHTML = "";
+    for (let i=0;i< 6;i++){
+      cargaproductos(data.productos[i], data.español);
+    }
+    datos = data;
+    paginador(datos, 1);
+    console.log(actual());
+  });
+
+function paginador(data, actual) {
+  let paginas = data.productos.length / 6;
+  if ((paginas % 6) > 0) totalPaginas = Math.trunc(paginas)+1
+  else
+    totalPaginas = paginas;
+   
+  // Controlamos la activacion de anterior y siguiente
+  if (actual == 1) {
+    document.getElementById("liAnterior").classList.add("disabled")
+  } else {
+    document.getElementById("liAnterior").classList.remove("disabled")
+  }
+  if (actual == totalPaginas) {
+    document.getElementById("liSiguiente").classList.add("disabled")
+  } else {
+    document.getElementById("liSiguiente").classList.remove("disabled")
+  }
+  let fragmento = new DocumentFragment();
+  for (let i = 1; i <= totalPaginas; i++) {
+    let linea = document.createElement("li");
+    let vinculo = document.createElement("a");
+    vinculo.href = "";
+    let span = document.createElement("span");
+    span.classList.add("page-link");
+    linea.classList.add("page-item", "mx-3");
+    if (i == actual) {
+      linea.classList.add("active");
+      linea.setAttribute("aria-current", "page");
+      span.innerText = i;
+      linea.appendChild(span);
+    } else {
+      vinculo.classList.add("page_link");
+      vinculo.innerText = i;
+      vinculo.onclick = cambiaPagina;
+      linea.appendChild(vinculo);
+    }
+    fragmento.appendChild(linea);
+  }
+  document.getElementById("paginas").innerHTML = "";
+  document.getElementById("paginas").appendChild(fragmento);
+}
+
+function cargaproductos(producto, idioma) {
+  let tarjeta = document.createElement("div");
+  tarjeta.classList.add("card");
+  tarjeta.style = "width: 18rem;";
+  let foto = document.createElement("img");
+  foto.src = `./imagenes/${producto.codigo}.jpg`;
+  foto.classList.add("card-img-top", "margin");
+  tarjeta.appendChild(foto);
+  let cuerpo = document.createElement("div");
+  cuerpo.classList.add("card-body");
+  var entries = Object.entries(producto);
+  let fragmento = new DocumentFragment();
+  entries.forEach(([key, value]) => {
+    if (key != "codigo") {
+      if (key == "descripcion") {
+        let titulo = document.createElement("h5");
+        titulo.innerHTML = `${idioma[key]}: ${value}`;
+        cuerpo.appendChild(titulo);
+      } else {
+        let etiqueta = document.createElement("p");
+        etiqueta.innerHTML = `<b>${idioma[key]}</b>: ${value}`;
+        fragmento.appendChild(etiqueta);
+      }
+    }
+  });
+  // -----------------------------------------------
+  cuerpo.appendChild(fragmento);
+  tarjeta.appendChild(cuerpo);
+  document.getElementById("listado").appendChild(tarjeta);
+}
+
+let formulario = document.getElementById("formulario");
+formulario.addEventListener("click", function (event) {
+  event.preventDefault();
+  // Recorremos la lista de productos con los carteles de sus datos en el
+  // idioma elegido
+  document.getElementById("listado").innerHTML = "";
+  datos.productos.forEach((elemento) => {
+    cargaproductos(elemento, datos[event.target.alt]);
+  });
+  paginador(datos);
+});
+
+document.getElementById("anterior").addEventListener("click", () => {});
+
+function actual() {
+  const paginas = document.getElementById("paginas");
+  //
+  for (const child of paginas.childNodes) {
+    if (Array.from(child.classList).includes("active")) {
+      return parseInt(child.firstChild.innerText);
+    }
+  }
+}
+
+document.getElementById("anterior").addEventListener("click", () => {
+  if (actual() > 1) {
+    let paginaActual = actual() - 1;
+    // Vamos a llamar a la funcion de actualizar la pagina actual
+    paginador(datos,paginaActual);
+    cargaPaginas(datos,paginaActual);
+  }
+});
+
+document.getElementById("siguiente").addEventListener("click", () => {
+  if (actual()< totalPaginas) {
+    let paginaActual = actual() + 1;
+    // Vamos a llamar a la funcion de actualizar la pagina actual
+    paginador(datos,paginaActual);
+    cargaPaginas(datos,paginaActual);
+  }
+});
+
+function cargaPaginas(datos,paginaActual){
+  let inicio = (paginaActual-1) * 6;
+  document.getElementById("listado").innerHTML = "";
+  for (let i=inicio;i < (inicio + 6);i++){
+    cargaproductos(datos.productos[i], datos.español);
+  }
+}
+
+function cambiaPagina(event){
+  event.preventDefault();
+  paginador(datos,event.target.text);
+  cargaPaginas(datos,event.target.text);
+}

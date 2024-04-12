@@ -1,0 +1,436 @@
+{
+    "productos" :[
+        {
+            "codigo": "I00000001",
+            "descripcion": " Cerveza",
+            "familia": 1,
+            "stock": 300,
+            "precio":  1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000002",
+            "descripcion": " Cerveza 0%",
+            "familia": 1,
+            "stock": 300,
+            "precio":  1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000003",
+            "descripcion": " Agua",
+            "familia": 1,
+            "stock": 300,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000004",
+            "descripcion": " Pepsi",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000005",
+            "descripcion": " Pepsi Max",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000006",
+            "descripcion": " Pepsi Light",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000007",
+            "descripcion": " Kas Naranja",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000008",
+            "descripcion": " Kas Limón",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000009",
+            "descripcion": " Lipton",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000010",
+            "descripcion": " Seven UP",
+            "familia": 1,
+            "stock": 500,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000011",
+            "descripcion": " Kreamball Oreo",
+            "familia": 2,
+            "stock": 300,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000012",
+            "descripcion": " Kreamball Kit Kat",
+            "familia": 2,
+            "stock": 300,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000013",
+            "descripcion": " Kreamball Lacasitos",
+            "familia": 2,
+            "stock": 300,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000014",
+            "descripcion": " Sundae chocolate",
+            "familia": 2,
+            "stock": 300,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000015",
+            "descripcion": " Sundae caramelo",
+            "familia": 2,
+            "stock": 300,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000016",
+            "descripcion": " Sundae Frutas del bosque",
+            "familia": 2,
+            "stock": 300,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000017",
+            "descripcion": " Kentucky Fries BBQ Bacon",
+            "familia": 3,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000018",
+            "descripcion": " Kentucky Fries",
+            "familia": 3,
+            "stock": 400,
+            "precio": 4.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000019",
+            "descripcion": " Mazorca",
+            "familia": 3,
+            "stock": 400,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000020",
+            "descripcion": " Patatas fritas",
+            "familia": 3,
+            "stock": 400,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000021",
+            "descripcion": " 2 Tiras de Pechuga",
+            "familia": 3,
+            "stock": 400,
+            "precio": 1.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000022",
+            "descripcion": " 3 Alitas Picantes",
+            "familia": 3,
+            "stock": 400,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000023",
+            "descripcion": " Salsa 2Hot4U",
+            "familia": 4,
+            "stock": 400,
+            "precio": 0.50,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000024",
+            "descripcion": " Salsa Smoky BBQ",
+            "familia": 4,
+            "stock": 400,
+            "precio": 0.50,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000025",
+            "descripcion": " Salsa Sweet Imperial",
+            "familia": 4,
+            "stock": 400,
+            "precio": 0.50,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000026",
+            "descripcion": " Boxmaster BBQ Bacon",
+            "familia": 5,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000027",
+            "descripcion": " Boxmaster",
+            "familia": 5,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000028",
+            "descripcion": " Twister",
+            "familia": 5,
+            "stock": 500,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000029",
+            "descripcion": " Tower Bacon",
+            "familia": 6,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000030",
+            "descripcion": " Towern",
+            "familia": 6,
+            "stock": 500,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000031",
+            "descripcion": " Double BBC",
+            "familia": 6,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000032",
+            "descripcion": " Original Burger",
+            "familia": 6,
+            "stock": 500,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000033",
+            "descripcion": " BBC",
+            "familia": 6,
+            "stock": 500,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000034",
+            "descripcion": " 5 Tiras de pechuga + 2 salsas dip",
+            "familia": 7,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000035",
+            "descripcion": " 3 Tiras de pechuga + 1 Salsa Dip",
+            "familia": 7,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000036",
+            "descripcion": " 8 Alitas Picantes",
+            "familia": 7,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000037",
+            "descripcion": " 5 Alitas Picantes",
+            "familia": 7,
+            "stock": 500,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000038",
+            "descripcion": " 3 Piezas de pollo",
+            "familia": 7,
+            "stock": 500,
+            "precio": 2.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000039",
+            "descripcion": " 2 Piezas de pollo",
+            "familia": 7,
+            "stock": 500,
+            "precio": 1.50,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000040",
+            "descripcion": " 12 Alitas Picantes",
+            "familia": 8,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000041",
+            "descripcion": " 9 Tiras de Pechuga + 3 Salsas Dip",
+            "familia": 8,
+            "stock": 500,
+            "precio": 3.50,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000042",
+            "descripcion": " 6 Piezas",
+            "familia": 8,
+            "stock": 500,
+            "precio": 3.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000043",
+            "descripcion": " Bucket 12 Tiras de pechuga + 4 salsas dip",
+            "familia": 8,
+            "stock": 500,
+            "precio": 10.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000044",
+            "descripcion": " Bucket 7 Tiras + 7 Alitas + 2 Salsas Dip",
+            "familia": 8,
+            "stock": 500,
+            "precio": 10.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000045",
+            "descripcion": " Menú Bucket 10 Tiras de pechuga + 3 Salsas Dip",
+            "familia": 8,
+            "stock": 500,
+            "precio": 10.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000046",
+            "descripcion": " Bucket 5 Piezas + 5 Alitas",
+            "familia": 8,
+            "stock": 500,
+            "precio": 10.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000047",
+            "descripcion": " Bucket 6 Piezas de pollo",
+            "familia": 8,
+            "stock": 500,
+            "precio": 10.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000048",
+            "descripcion": " Bucket 15 Tiras de pechuga + 5 Salsas Dip",
+            "familia": 9,
+            "stock": 500,
+            "precio": 20.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000049",
+            "descripcion": " Bucket 9 Piezas",
+            "familia": 9,
+            "stock": 500,
+            "precio": 20.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000050",
+            "descripcion": " Bucket 20 Tiras de pechuga + 6 Salsas Dip",
+            "familia": 9,
+            "stock": 500,
+            "precio": 35.00,
+            "impuesto": 2
+        },
+        {
+            "codigo": "I00000051",
+            "descripcion": " Bucket 12 Piezas de pollo",
+            "familia": 9,
+            "stock": 500,
+            "precio": 35.00,
+            "impuesto": 2
+        }
+    ],
+    "aleman": {
+        "codigo":"Code",
+        "descripcion": "Beschreibung",
+        "familia": "familie",
+        "stock": "Aktie",
+        "precio": "Preis",
+        "impuesto" :"Steuer"
+    },
+    "español": {
+        "codigo":"Codigo",
+        "descripcion": "Descripcion",
+        "familia": "Familia",
+        "stock": "Stock",
+        "precio": "Precio",
+        "impuesto" :"Impuesto"
+    },
+    "ingles": {
+        "codigo":"Code",
+        "descripcion": "Description",
+        "familia": "family",
+        "stock": "Stock",
+        "precio": "Price",
+        "impuesto" :"Tax"
+    }
+}
