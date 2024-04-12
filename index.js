@@ -28,6 +28,15 @@ fetch("familias.json")
   });
 })
 
+function cargaFiltroFamilias(familias) {
+  document.getElementById("familias").innerHTML = "";
+  for (elemento in familias) {
+    let nomFamilia = document.createElement("option");
+    nomFamilia.value = elemento;
+    nomFamilia.innerHTML = familias[elemento];
+    document.getElementById("familias").appendChild(nomFamilia);
+  }
+}
 
 window.addEventListener('resize', () => {
   calculoElementosPorPagina();
