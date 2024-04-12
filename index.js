@@ -28,20 +28,19 @@ fetch("familias.json")
   });
 })
 
-/* document.getElementById("familias").addEventListener("change", (event) => {
+document.getElementById("familias").addEventListener("change", (event) => {
   document.getElementById("productos").innerHTML = "";
   if (event.target.value == 0) {
-    muestraProductos(datos.productos);
+    cargaPaginas(datos.productos,1);
   } else {
     let datosFiltrados = datos.productos.filter(function (P) {
       return console.log(P.familia == event.target.value);
     });
     
-    console.log(datosFiltrados);
-    muestraProductos(datosFiltrados);
+    cargaPaginas(datosFiltrados,1);
   }
 });
-
+/*
 function cargaFiltroFamilias(familias) {
   document.getElementById("familias").innerHTML = "";
   for (elemento in familias) {
