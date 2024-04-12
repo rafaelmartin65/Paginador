@@ -5,8 +5,8 @@ const
     10: 900
 };
 let datos;
-let datosFamilia;
 let productosFiltrados;
+let datosFamilia;
 let totalPaginas;
 let idiomaActual;
 let elementosPorPagina = 10;
@@ -20,45 +20,16 @@ fetch("familias.json")
   .then((response) => response.json())
   .then((data) => {
     document.getElementById("listado").innerHTML = "";
-    datos = data;
+    datos =  data;
+    productosFiltrados = data.productos;
     elementosPorPagina = calculoElementosPorPagina();
     for (let i=0;i< elementosPorPagina;i++){
-      cargaproductos(data.productos[i], data,idiomaActual);
+      cargaproductos(data.productos[i],idiomaActual);
     }
     paginador(productosFiltrados, 1);
   });
 })
 
-document.getElementById("familias").addEventListener("change", (event) => {
-  document.getElementById("productos").innerHTML = "";
-  if (event.target.value == 0) {
-    cargaPaginas(datos.productos,1);
-  } else {
-    let productosFiltrados = datos.productos.filter(function (P) {
-      return console.log(P.familia == event.target.value);
-    });
-    
-    cargaPaginas(productosFiltrados,1);
-  }
-});
-/*
-function cargaFiltroFamilias(familias) {
-  document.getElementById("familias").innerHTML = "";
-  for (elemento in familias) {
-    let nomFamilia = document.createElement("option");
-    nomFamilia.value = elemento;
-    nomFamilia.innerHTML = familias[elemento];
-    document.getElementById("familias").appendChild(nomFamilia);
-  }
-}
-
-function muestraProductos(listaProductos) {
-  listaProductos.forEach((elemento) => {
-    let descripcion = document.createElement("p");
-    descripcion.innerHTML = elemento.descripcion;
-    document.getElementById("productos").appendChild(descripcion);
-  });
-} */
 
 window.addEventListener('resize', () => {
   calculoElementosPorPagina();
@@ -74,7 +45,7 @@ function calculoElementosPorPagina(){
    if (iw >= screen[s]) size = s;
  }
  paginador(productosFiltrados,actual());
- cargaPaginas(datos,actual());
+ cargaPaginas(datos.productos,actual());
  return parseInt(size);
 }
 
@@ -119,8 +90,10 @@ function paginador(productos, actual) {
   document.getElementById("paginas").innerHTML = "";
   document.getElementById("paginas").appendChild(fragmento);
 }
-
-function cargaproductos(producto,idioma) {
+// -----------------------------------------------
+// Cargamos un producto en pantalla
+// -----------------------------------------------
+function cargaproductos(producto, idioma) {
   let tarjeta = document.createElement("div");
   tarjeta.classList.add("card","mx-1");
   tarjeta.style = "width: 15rem;";
@@ -147,18 +120,17 @@ function cargaproductos(producto,idioma) {
         } else {
           etiqueta.innerHTML = `<b>${datos[idioma][key]}</b>: ${value}`;
         }
-        
         fragmento.appendChild(etiqueta);
       }
     }
   });
-  // -----------------------------------------------
   cuerpo.appendChild(fragmento);
   tarjeta.appendChild(cuerpo);
   document.getElementById("listado").appendChild(tarjeta);
 }
-
+// -----------------------------------------------
 // Cambiamos el idioma seleccionando la bandera
+// -----------------------------------------------
 let formulario = document.getElementById("formulario");
 formulario.addEventListener("click", function (event) {
   event.preventDefault();
@@ -166,16 +138,14 @@ formulario.addEventListener("click", function (event) {
   document.getElementById("listado").innerHTML = "";
   idiomaActual = event.target.alt;
   for (let i=0;i< elementosPorPagina;i++){
-    cargaproductos(datos.productos[i],idiomaActual);
+    cargaproductos(datos.productos[i], datos,idiomaActual);
   };
   cargaFiltroFamilias(datosFamilia[idiomaActual])
   paginador(productosFiltrados,1);
 });
 
-
 function actual() {
   const paginas = document.getElementById("paginas");
-  //
   for (const child of paginas.childNodes) {
     if (Array.from(child.classList).includes("active")) {
       return parseInt(child.firstChild.innerText);
@@ -188,31 +158,39 @@ document.getElementById("anterior").addEventListener("click", () => {
     let paginaActual = actual() - 1;
     // Vamos a llamar a la funcion de actualizar la pagina actual
     paginador(productosFiltrados,paginaActual);
-    cargaPaginas(datos,paginaActual);
+    cargaPaginas(datos.productos,paginaActual);
   }
 });
 
 document.getElementById("siguiente").addEventListener("click", () => {
+  console.log(actual(),totalPaginas);
   if (actual()< totalPaginas) {
     let paginaActual = actual() + 1;
     // Vamos a llamar a la funcion de actualizar la pagina actual
     paginador(productosFiltrados,paginaActual);
-    cargaPaginas(datos,paginaActual);
+    cargaPaginas(datos.productos,paginaActual);
   }
 });
 
-function cargaPaginas(datos,paginaActual){
+function cargaPaginas(productos,paginaActual){
   let inicio = (paginaActual-1) * elementosPorPagina;
   document.getElementById("listado").innerHTML = "";
-  for (let i=inicio;i < (inicio + elementosPorPagina);i++){
-    cargaproductos(datos.productos[i],idiomaActual);
+  if (inicio + elementosPorPagina > productos.length){
+    final = productos.length;
+  }
+    else
+  {
+    final = inicio + elementosPorPagina;
+  };  
+  for (let i=inicio;i < final;i++){
+    cargaproductos(productos[i], idiomaActual);
   }
 }
 
 function cambiaPagina(event){
   event.preventDefault();
   paginador(productosFiltrados,event.target.text);
-  cargaPaginas(datos,event.target.text);
+  cargaPaginas(datos.productos,event.target.text);
 }
 
 function cargaFiltroFamilias(familias){
@@ -224,3 +202,20 @@ function cargaFiltroFamilias(familias){
     document.getElementById("familias").appendChild(nomFamilia);
   };
 }
+// -----------------------------------------------
+// Se dispara el filtro de familias
+// -----------------------------------------------
+document.getElementById("familias").addEventListener("change", (event) => {
+  document.getElementById("listado").innerHTML = "";
+  if (event.target.value == 0) {
+    productosFiltrados = datos.productos;
+    cargaPaginas(datos.productos,1);
+  } else {
+    productosFiltrados = datos.productos.filter(function (P) {
+      return P.familia == event.target.value;
+    });
+    cargaPaginas(productosFiltrados,1);
+  }
+  console.log(productosFiltrados);
+  paginador(productosFiltrados, 1);
+});
