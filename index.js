@@ -51,7 +51,7 @@ function calculoElementosPorPagina(){
 
 function paginador(productos, actual) {
   let paginas = productos.length / elementosPorPagina;
-  if ((paginas % elementosPorPagina) > 0) totalPaginas = Math.trunc(paginas)+1
+  if (paginas  > Math.trunc(paginas)) totalPaginas = Math.trunc(paginas)+1
   else
     totalPaginas = paginas;
    
@@ -138,7 +138,7 @@ formulario.addEventListener("click", function (event) {
   document.getElementById("listado").innerHTML = "";
   idiomaActual = event.target.alt;
   for (let i=0;i< elementosPorPagina;i++){
-    cargaproductos(datos.productos[i], datos,idiomaActual);
+    cargaproductos(productosFiltrados[i],idiomaActual);
   };
   cargaFiltroFamilias(datosFamilia[idiomaActual])
   paginador(productosFiltrados,1);
@@ -152,23 +152,28 @@ function actual() {
     }
   }
 }
-
+// -----------------------------------------------
+// Damos click en anterior
+// -----------------------------------------------
 document.getElementById("anterior").addEventListener("click", () => {
   if (actual() > 1) {
     let paginaActual = actual() - 1;
     // Vamos a llamar a la funcion de actualizar la pagina actual
     paginador(productosFiltrados,paginaActual);
-    cargaPaginas(datos.productos,paginaActual);
+    cargaPaginas(productosFiltrados,paginaActual);
   }
 });
 
+// -----------------------------------------------
+// Damos click en siguiente
+// -----------------------------------------------
 document.getElementById("siguiente").addEventListener("click", () => {
   console.log(actual(),totalPaginas);
   if (actual()< totalPaginas) {
     let paginaActual = actual() + 1;
     // Vamos a llamar a la funcion de actualizar la pagina actual
     paginador(productosFiltrados,paginaActual);
-    cargaPaginas(datos.productos,paginaActual);
+    cargaPaginas(productosFiltrados,paginaActual);
   }
 });
 
@@ -190,7 +195,7 @@ function cargaPaginas(productos,paginaActual){
 function cambiaPagina(event){
   event.preventDefault();
   paginador(productosFiltrados,event.target.text);
-  cargaPaginas(datos.productos,event.target.text);
+  cargaPaginas(productosFiltrados,event.target.text);
 }
 
 function cargaFiltroFamilias(familias){
